@@ -1,0 +1,409 @@
+# ccc   程式開發練習作業0327 
+c x 10  || c++ x 10  ||  java x 10  
+c=============================================c
+#include < stdio.h > 
+ 
+int main ( ) { /* 我的第一個C程序*/ printf ( " Hello, World! \ n " ) ;
+ 
+     return 0 ;
+ } 
+#include是一個預處理命令
+int 宣告一個名稱
+stdio.h是一個頭文件(標準輸入輸出頭文件 
+main 在所有的語言程序都需要包含()函數
+printf ()用於格式化輸出到屏幕
+"\n" 表示内容为一个回车符的字符串
+return 0;語句用於表示退出程序
+===============================================
+#include<stdio.h>
+ 
+int main()
+{
+    int i,j,k;
+    printf("\n");
+    for(i=1;i<5;i++) { // 以下為三重循環
+        for(j=1;j<5;j++) {
+            for (k=1;k<5;k++) { // 確保i、j、k三位互不相同
+                if (i!=k&&i!=j&&j!=k) { 
+                    printf("%d,%d,%d\n",i,j,k);
+                }
+            }
+        }
+    }
+}
+================================================
+#include<stdio.h>
+int main()
+{
+    double i;
+    double bonus1,bonus2,bonus4,bonus6,bonus10,bonus;
+    printf("你的淨利潤是：\n");
+    scanf("%lf",&i);
+    bonus1=100000*0.1;
+    bonus2=bonus1+100000*0.075;
+    bonus4=bonus2+200000*0.05;
+    bonus6=bonus4+200000*0.03;
+    bonus10=bonus6+400000*0.015;
+    if(i<=100000) {
+        bonus=i*0.1;
+    } else if(i<=200000) {
+        bonus=bonus1+(i-100000)*0.075;
+    } else if(i<=400000) {
+        bonus=bonus2+(i-200000)*0.05;
+    } else if(i<=600000) {
+        bonus=bonus4+(i-400000)*0.03;
+    } else if(i<=1000000) {
+        bonus=bonus6+(i-600000)*0.015;
+    } else if(i>1000000) {
+        bonus=bonus10+(i-1000000)*0.01;
+    }
+    printf("提成为：bonus=%lf",bonus);
+ 
+    printf("\n");
+}
+============================================
+#include <stdio.h>
+ 
+int main (void)
+{
+    int  i, j, m, n, x;
+    for (i = 1; i < 168 / 2 + 1; i++)
+    {
+        if (168 % i == 0)
+        {
+            j = 168 / i;
+            if ( i > j && (i + j) % 2 == 0 && (i - j) % 2 == 0)
+            {
+                m = (i + j) / 2;
+                n = (i - j) / 2;
+                x = n * n - 100;
+                printf ("%d + 100 = %d * %d\n", x, n, n);
+                printf ("%d + 268 = %d * %d\n", x, m, m);
+            }
+        }
+    }
+    return 0;
+}
+===========================================
+#include <stdio.h>
+int main()
+{
+    int day,month,year,sum,leap;
+    printf("\n請輸入年、月、日，格式為：年,月,日（2015,12,10）\n");
+    scanf("%d,%d,%d",&year,&month,&day);  // 格式為：2015,12,10
+    switch(month) // 先計算某月以前月份的總天數 
+    {
+        case 1:sum=0;break;
+        case 2:sum=31;break;
+        case 3:sum=59;break;
+        case 4:sum=90;break;
+        case 5:sum=120;break;
+        case 6:sum=151;break;
+        case 7:sum=181;break;
+        case 8:sum=212;break;
+        case 9:sum=243;break;
+        case 10:sum=273;break;
+        case 11:sum=304;break;
+        case 12:sum=334;break;
+        default:printf("data error");break;
+    }
+    sum=sum+day; // 再加上某天的天數
+    if(year%400==0||(year%4==0&&year%100!=0)) {// 判斷是不是閏年
+        leap=1;
+    } else {
+       leap=0;
+    }
+    if(leap==1&&month>2) { // *如果是閏年且月份大於2,總天數應該加一天 
+        sum++;
+    }
+    printf("這是這一年的第%d天。",sum);
+    printf("\n");
+}
+=============================================
+#include <stdio.h>
+ 
+int main()
+{
+    int x,y,z,t;
+    printf("\n請輸入三個數字:\n");
+    scanf("%d%d%d",&x,&y,&z);
+    if (x>y) { /*交换x,y的值*/
+        t=x;x=y;y=t;
+    }
+    if(x>z) { /*交换x,z的值*/
+        t=z;z=x;x=t;
+    }
+    if(y>z) { /*交换z,y的值*/
+        t=y;y=z;z=t;
+    }
+    printf("从小到大排序: %d %d %d\n",x,y,z);
+}
+=============================================
+ #include "stdio.h"
+int main()
+{
+    printf("用 * 號輸出字母 C!\n");
+    printf(" ****\n");
+    printf(" *\n");
+    printf(" * \n");
+    printf(" ****\n");
+}
+=============================================
+#include<stdio.h>
+int main()
+{
+    char a=176,b=219;
+    printf("%c%c%c%c%c\n",b,a,a,a,b);
+    printf("%c%c%c%c%c\n",a,b,a,b,a);
+    printf("%c%c%c%c%c\n",a,a,b,a,a);
+    printf("%c%c%c%c%c\n",a,b,a,b,a);
+    printf("%c%c%c%c%c\n",b,a,a,a,b);
+    return 0;
+}
+==============================================
+#include<stdio.h>
+ 
+int main()
+{
+    int i,j;
+    printf("\1\1\n"); /*輸出兩個笑臉*/
+    for(i=1;i<11;i++)
+    {
+        for(j=1;j<=i;j++)
+            printf("%c%c",219,219);
+        printf("\n");
+    }
+    return 0;
+}
+==============================================
+#include<stdio.h>
+ 
+int main()
+{
+    int f1=1,f2=1,i;
+    for(i=1;i<=20;i++)
+    {
+        printf("%12d%12d",f1,f2);
+        if(i%2==0) printf("\n");
+        f1=f1+f2;
+        f2=f1+f2;
+    }
+    
+    return 0;
+}
+c++=====================================c++
+#include <iostream>
+using namespace std;
+int main()
+{
+    cout << "Hello, world!" << endl;
+    return 0;
+}
+iostream用於數據的流式輸入與輸出的頭文件
+using namespace 聲明區域中的名字自動隱藏
+std::endl 输出一个换行符
+cout用於格式化輸出到屏幕
+endl表示内容为一个回车符的字符串
+==============================================
+include <iostream>
+using namespace std;
+ 
+// 變量聲明
+extern int a, b;
+extern int c;
+extern float f;
+  
+int main ()
+{
+  // 變量定義   
+  int a, b;
+  int c;
+  float f;
+ 
+  // 實際初始化   
+  a = 10;
+  b = 20;
+  c = a + b;
+ 
+  cout << c << endl ;
+ 
+  f = 70.0/3.0;
+  cout << f << endl ;
+ 
+  return 0;
+}
+===========================================
+#include <iostream>
+using namespace std;
+ 
+int main ()
+{
+  // 局部變量聲明
+  int a, b;
+  int c;
+ 
+  // 實際初始化 
+  a = 10;
+  b = 20;
+  c = a + b;
+ 
+  cout << c;
+ 
+  return 0;
+}
+=============================================
+#include <iostream>
+using namespace std;
+ 
+#define LENGTH 10   
+#define WIDTH  5
+#define NEWLINE '\n'
+ 
+int main()
+{
+ 
+   int area;  
+   
+   area = LENGTH * WIDTH;
+   cout << area;
+   cout << NEWLINE;
+   return 0;
+}
+=============================================
+#include <iostream>
+using namespace std;
+ 
+/* 
+ * 這個程序演示了有符號整數和無符號整數之間的差別
+*/
+int main()
+{
+   short int i;           // 有符號短整數
+   short unsigned int j;  // 無符號短整數 
+ 
+   j = 50000;
+ 
+   i = j;
+   cout << i << " " << j;
+ 
+   return 0;
+}
+============================================
+#include <iostream>
+ 
+// 函數聲明  
+void func(void);
+ 
+static int count = 10; /* 全局變量 */
+ 
+int main()
+{
+    while(count--)
+    {
+       func();
+    }
+    return 0;
+}
+// 函數定義
+void func( void )
+{
+    static int i = 5; // 局部靜態變量 
+    i++;
+    std::cout << "變量 i 为 " << i ;
+    std::cout << " , 變量 count 為 " << count << std::endl;
+}
+==============================================
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+   int a = 21;
+   int b = 10;
+   int c;
+ 
+   c = a + b;
+   cout << "Line 1 - c 的值是 " << c << endl ;
+   c = a - b;
+   cout << "Line 2 - c 的值是 " << c << endl ;
+   c = a * b;
+   cout << "Line 3 - c 的值是 " << c << endl ;
+   c = a / b;
+   cout << "Line 4 - c 的值是 " << c << endl ;
+   c = a % b;
+   cout << "Line 5 - c 的值是 " << c << endl ;
+ 
+   int d = 10;   //  測試自增、自減
+   c = d++;
+   cout << "Line 6 - c 的值是 " << c << endl ;
+ 
+   d = 10;    // 重新赋值
+   c = d--;
+   cout << "Line 7 - c 的值是 " << c << endl ;
+   return 0;
+}
+==================================================
+#include < iostream > 
+using namespace std ;
+ 
+ int main ( ) { for ( ; ; ) { printf ( " This loop will run forever. \ n " ) ;
+    } return 0 ;
+ }    
+ ================================================
+ #include <iostream>
+using namespace std;
+ 
+int main ()
+{
+   // 數字定義
+   short  s;
+   int    i;
+   long   l;
+   float  f;
+   double d;
+   
+   // 數字賦值 
+   s = 10;      
+   i = 1000;    
+   l = 1000000; 
+   f = 230.47;  
+   d = 30949.374;
+   
+   // 數字輸出
+   cout << "short  s :" << s << endl;
+   cout << "int    i :" << i << endl;
+   cout << "long   l :" << l << endl;
+   cout << "float  f :" << f << endl;
+   cout << "double d :" << d << endl;
+ 
+   return 0;
+}
+===========================================
+#include <iostream>
+ 
+using namespace std;
+ 
+int main ()
+{
+   char greeting[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
+ 
+   cout << "Greeting message: ";
+   cout << greeting << endl;
+ 
+   return 0;
+}
+java====================================java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+public表明该数据成员
+class命令名稱
+static變數
+void呼叫一個函數
+main在所有的語言程序都需要包含()函數
+System用於格式化
+out跳出螢幕
+println印出
+==================================================
